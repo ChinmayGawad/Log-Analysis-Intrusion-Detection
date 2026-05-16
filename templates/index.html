@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intrusion Detection Dashboard</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 40px; background-color: #f8f9fa; color: #333; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 15px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background-color: #2c3e50; color: white; }
+        tr:hover { background-color: #f1f1f1; }
+        
+        /* Severity Badges */
+        .badge { padding: 6px 12px; border-radius: 4px; font-weight: bold; color: white; text-align: center; display: inline-block; width: 80px;}
+        .High { background-color: #e74c3c; }   /* Red */
+        .Medium { background-color: #f39c12; } /* Orange */
+        .Low { background-color: #27ae60; }    /* Green */
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🛡️ SIEM Log Analysis Dashboard</h1>
+        <p>Monitoring server logs for suspicious brute-force activity.</p>
+        
+        {% if report %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Target IP Address</th>
+                    <th>Failed Login Attempts</th>
+                    <th>Threat Severity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Jinja2 loop to dynamically generate table rows from Python data -->
+                {% for item in report %}
+                <tr>
+                    <td><strong>{{ item.ip }}</strong></td>
+                    <td>{{ item.count }}</td>
+                    <td><span class="badge {{ item.severity }}">{{ item.severity }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p style="color: red;"><strong>Error:</strong> Log file not found or empty.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
