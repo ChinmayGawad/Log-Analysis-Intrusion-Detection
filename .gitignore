@@ -92,7 +92,7 @@ __pypackages__/
 .vscode/
 
 # Logs
-*.log
+
 
 # Environment
 .env
