@@ -32,4 +32,5 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 👤 Author
 Chinmay Gawad
 
-GitHub: @ChinmayGawad
+GitHub: @ChinmayGawad 
+Contributors:@afjalk09
